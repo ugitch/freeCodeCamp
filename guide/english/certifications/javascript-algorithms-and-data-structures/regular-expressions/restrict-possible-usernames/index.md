@@ -6,7 +6,7 @@ title: Restrict Possible Usernames
 ## Solution:
 ```javascript
 let username = "JackOfAllTrades";
-let userCheck = /^[a-z]{2,}\d*$/i;
+let userCheck = /^[a-z]{2,}\d*$/i|(?=\w{3,})^[a-z]{1,}\d+$;
 let result = userCheck.test(username);
 ```
 ## Explain:
@@ -24,3 +24,12 @@ let result = userCheck.test(username);
 ```javascript
 /^[a-z]{2,}\d*$/i;
 ```
+4. Even though two-letter username can only use alphabet letter characters,
+   we can use three-or-more-letter username with a single alphabet letter character
+   at the beginning. This is the second part of the regular expression.
+```javascript
+(?=\w{3,})^[a-z]{1,}\d+$;
+```
+
+## Remark:
+Point 4 implies knowledge of positive lookahead (look further toward the end of the section on regular expressions).
